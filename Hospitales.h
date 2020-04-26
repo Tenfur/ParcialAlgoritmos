@@ -39,7 +39,9 @@ class Hospital {
 		T4 getPacientes() {
 			return pacientes;
 		}
-
+		T2 getDepartamento() {
+			return departamento;
+		}
 		int getContador() {
 			ifstream archivo;
 			string registro, nombre, departamento, numeroRespiradores, numeroPacientes, id;
@@ -135,6 +137,46 @@ class Hospital {
 				Hospital *nuevo = new Hospital(nombre, departamento, numeroRes, numeroPac);
 				if (condicion(nuevo)) {
 					cout << nuevo->nombre << endl;
+				}
+			}
+			archivo.close();
+		}
+		void mostrarHospitalesConRespiradoresInsuficientes(function<bool(Hospital<string, string, int, int>*)> condicion) {
+			ifstream archivo;
+			archivo.open("archivo.txt", ios::in);
+			string registro, nombre, departamento, numeroRespiradores, numeroPacientes;
+			int cont = 0, numeroPac, numeroRes;
+			while (getline(archivo, registro)) {
+				stringstream ss(registro);
+				getline(ss, nombre, ',');
+				getline(ss, departamento, ',');
+				getline(ss, numeroRespiradores, ',');
+				getline(ss, numeroPacientes, ',');
+				numeroPac = atoi(numeroPacientes.c_str());
+				numeroRes = atoi(numeroRespiradores.c_str());
+				Hospital *nuevo2 = new Hospital(nombre, departamento, numeroRes, numeroPac);
+				if (condicion(nuevo2)) {
+					cout << nuevo2->nombre << endl;
+				}
+			}
+			archivo.close();
+		}
+		void mostrarHospitalesPorDepartamento(function<bool(Hospital<string, string, int, int>*)> condicion) {
+			ifstream archivo;
+			archivo.open("archivo.txt", ios::in);
+			string registro, nombre, departamento, numeroRespiradores, numeroPacientes;
+			int cont = 0, numeroPac, numeroRes;
+			while (getline(archivo, registro)) {
+				stringstream ss(registro);
+				getline(ss, nombre, ',');
+				getline(ss, departamento, ',');
+				getline(ss, numeroRespiradores, ',');
+				getline(ss, numeroPacientes, ',');
+				numeroPac = atoi(numeroPacientes.c_str());
+				numeroRes = atoi(numeroRespiradores.c_str());
+				Hospital *nuevo2 = new Hospital(nombre, departamento, numeroRes, numeroPac);
+				if (condicion(nuevo2)) {
+					cout << nuevo2->nombre << endl;
 				}
 			}
 			archivo.close();

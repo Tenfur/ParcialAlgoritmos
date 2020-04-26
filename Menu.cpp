@@ -11,14 +11,6 @@ int main() {
 	int opcion, opcion2, numeroDePacientes, numeroRespiradores;
 	string departamento, nombre;
 	Hospital <string, string, int, int> *obj = new Hospital<string, string, int, int>();
-	auto respiradoresSuficientes = [](Hospital <char, string, int, int> *obj) {
-		if (obj->getRespiradores() < 500) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	};
 	do {
 		system("cls");
 		cout << "\tMinisterio de salud" << endl;
@@ -54,21 +46,47 @@ int main() {
 			_getch();
 		}
 		else if (opcion == 4) {
-			system("cls");
-			cout << "\t Informacion detallada" << endl;
-			cout << "1) Hospitales saturados de pacientes" << endl;
-			cout << "2) Hospitales con insuficientes respiradores mecanicos" << endl;
-			cout << "Ingrese opcion: ";
-			cin >> opcion2;
-			if (opcion2 == 1) {
+			do {
 				system("cls");
-				auto hospitalesSaturados = [](Hospital<string, string, int, int> *obj2) {
-					return (obj2->getPacientes() > 1000) ? true : false;
-				};
-				cout << "\t Hospitales saturados" << endl;
-				obj->mostrarHospitalesSaturados(hospitalesSaturados);
-				_getch();
-			}
+				cout << "\t Informacion detallada" << endl;
+				cout << "1) Hospitales saturados de pacientes" << endl;
+				cout << "2) Hospitales con insuficientes respiradores mecanicos" << endl;
+				cout << "3) Hospitales por departamento" << endl;
+				cout << "4) Salir" << endl;
+				cout << "Ingrese opcion: ";
+				cin >> opcion2;
+				if (opcion2 == 1) {
+					system("cls");
+					auto hospitalesSaturados = [](Hospital<string, string, int, int> *obj2) {
+						return (obj2->getPacientes() > 1000) ? true : false;
+					};
+					cout << "\t Hospitales saturados" << endl;
+					obj->mostrarHospitalesSaturados(hospitalesSaturados);
+					_getch();
+				}
+				else if (opcion2 == 2) {
+					system("cls");
+					auto respiradoresInsuficientes = [](Hospital <string, string, int, int> *obj) {
+						return (obj->getRespiradores() < 500) ? true : false;
+					};
+					cout << "\t Hospitales con insuficientes " << endl;
+					obj->mostrarHospitalesConRespiradoresInsuficientes(respiradoresInsuficientes);
+					_getch();
+				}
+				else if (opcion2 == 3) {
+					system("cls");
+					string departamento2;
+					cout << "Ingrese departamento: ";
+					cin >> departamento2;
+					system("cls");
+					auto hospitalesPorDepartamento = [departamento2](Hospital <string, string, int, int> * obj) {
+						return (obj->getDepartamento() == departamento2) ? true : false;
+					};
+					cout << "\t Hospitales en " << departamento2 << endl;
+					obj->mostrarHospitalesPorDepartamento(hospitalesPorDepartamento);
+					_getch();
+				}
+			} while (opcion2 != 4);
 		}
 	} while (opcion !=5);
 
