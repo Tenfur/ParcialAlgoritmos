@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <string.h>
 #include <fstream>
 #include <sstream>
 #include <conio.h>
@@ -118,11 +119,11 @@ class Hospital {
 			_getch();
 			archivo.close();
 		}
-		/*void mostrarHospitalesSaturados(function<bool(Hospital<string,string,int,int>*)> condicion) {
+		void mostrarHospitalesSaturados(function<bool(Hospital<string,string,int,int>*)> condicion) {
 			ifstream archivo;
-			archivo.open("achivo.txt", ios::in);
+			archivo.open("archivo.txt", ios::in);
 			string registro, nombre, departamento, numeroRespiradores, numeroPacientes;
-			int cont = 0, numeroPac;
+			int cont = 0, numeroPac, numeroRes;
 			while (getline(archivo, registro)) {
 				stringstream ss(registro);
 				getline(ss, nombre, ',');
@@ -130,12 +131,14 @@ class Hospital {
 				getline(ss, numeroRespiradores, ',');
 				getline(ss, numeroPacientes, ',');
 				numeroPac = atoi(numeroPacientes.c_str());
-				if (condicion(numeroPac)) {
-					cout << nombre << endl;
+				numeroRes = atoi(numeroRespiradores.c_str());
+				Hospital *nuevo = new Hospital(nombre, departamento, numeroRes, numeroPac);
+				if (condicion(nuevo)) {
+					cout << nuevo->nombre << endl;
 				}
 			}
 			archivo.close();
 		}
-*/
+
 
 };
