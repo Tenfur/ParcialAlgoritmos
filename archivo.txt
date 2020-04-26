@@ -1,0 +1,4 @@
+Lamba,lima,30,20,1
+Nom,s,2,3,2
+Villa,Junin,90,30,3
+Paolo,lima,30,40,4
