@@ -133,7 +133,6 @@ class Hospital {
 				if (condicion(numeroPac)) {
 					cout << nombre << endl;
 				}
-
 			}
 			archivo.close();
 		}
