@@ -53,7 +53,7 @@ int main() {
 			obj->mostrarHospitales();
 			_getch();
 		}
-		else if (opcion == 4) {
+		/*else if (opcion == 4) {
 			system("cls");
 			cout << "\t Información detallada" << endl;
 			cout << "1) Hospitales saturados de pacientes" << endl;
@@ -69,7 +69,7 @@ int main() {
 				obj->mostrarHospitalesSaturados(hospitalesSaturados);
 				_getch();
 			}
-		}
+		}*/
 	} while (opcion !=5);
 
 

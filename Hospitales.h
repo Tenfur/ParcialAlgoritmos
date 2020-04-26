@@ -118,7 +118,7 @@ class Hospital {
 			_getch();
 			archivo.close();
 		}
-		void mostrarHospitalesSaturados(function<bool(Hospital<string,string,int,int>*)> condicion) {
+		/*void mostrarHospitalesSaturados(function<bool(Hospital<string,string,int,int>*)> condicion) {
 			ifstream archivo;
 			archivo.open("achivo.txt", ios::in);
 			string registro, nombre, departamento, numeroRespiradores, numeroPacientes;
@@ -136,6 +136,6 @@ class Hospital {
 			}
 			archivo.close();
 		}
-
+*/
 
 };
