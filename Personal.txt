@@ -1,1 +1,4 @@
 Paolo,Lima,doctor,17,1
+Juan,Enfermera,Doctor,90,2
+Carlos,Lima,enfermera,90,3
+prueba2,lima,doctor,30,4

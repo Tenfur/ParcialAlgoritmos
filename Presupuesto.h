@@ -87,7 +87,23 @@ class Presupuesto {
 			}
 			archivo.close();
 		}
-
+		bool comprobarDepartamento(string departamento) {
+			ifstream archivo;
+			string registro, Sdepartamento, Spresupuestos;
+			archivo.open("Presupuestos.txt", ios::in);
+			while (getline(archivo, registro)) {
+				stringstream ss(registro);
+				getline(ss, Sdepartamento, ',');
+				getline(ss, Spresupuestos, ',');
+				if (Sdepartamento == departamento) {
+					return true;
+				}
+				else {
+					continue;
+				}
+			}
+			archivo.close();
+		}
 
 
 };
