@@ -23,7 +23,7 @@
     <ClInclude Include="Hospitales.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Pacientes.h">
+    <ClInclude Include="Personal.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

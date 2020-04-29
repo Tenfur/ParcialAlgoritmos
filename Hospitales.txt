@@ -1,0 +1,5 @@
+Paolo,Lima,90,20,1
+Paolo,Lima,20,30,2
+Valeria,Lima,90,20,3
+Ate,Lima,90,20,4
+Lalo,Tacna,90,50,5

@@ -4,6 +4,7 @@
 #include <string.h>
 #include <functional>
 #include "Hospitales.h"
+#include "Personal.h"
 
 using namespace std;
 
@@ -11,12 +12,13 @@ int main() {
 	int opcion, opcion2, opcion3, numeroDePacientes, numeroRespiradores;
 	string departamento, nombre;
 	Hospital <string, string, int, int> *obj = new Hospital<string, string, int, int>();
+	Personal <string, string, string, int> *obj2 = new Personal<string, string, string, int>();
 	do {
 		system("cls");
 		cout << "\tMinisterio de salud" << endl;
-		cout << "1) Registrar hospital " << endl;
-		cout << "2) Registrar personal" << endl;
-		cout << "3) Mostrar informacion completa" << endl;
+		cout << "1) Hospitales " << endl;
+		cout << "2) Personal" << endl;
+		cout << "3) Informacion completa" << endl;
 		cout << "4) Ver datos en especifico" << endl;
 		cout << "5) Salir" << endl;
 		cout << "Ingrese opcion: ";
@@ -24,10 +26,8 @@ int main() {
 		if (opcion == 1) {
 			system("cls");
 			cin.ignore();
-			//char *nombre = new char[20];
 			int numero = obj->getContador();
 			cout << "Nombre: ";
-			//cin.getline(nombre, 20);
 			cin >> nombre;
 			cout << "Departamento: ";
 			cin >> departamento;
@@ -43,8 +43,8 @@ int main() {
 			do {
 				system("cls");
 				cin.ignore();
-				int anios;
 				string nombre, departamento, profesion;
+				int anios, contador;
 				cout << "\t Menu de personal" << endl;
 				cout << "1) Registrar " << endl;
 				cout << "2) Visualizar personal registrado" << endl;
@@ -54,6 +54,7 @@ int main() {
 				if (opcion3 == 1) {
 					system("cls");
 					cout << "\t Registrar nuevo personal" << endl;
+					contador = obj2->getContador();
 					cout << "Nombre: ";
 					cin >> nombre;
 					cout << "Anios: ";
@@ -62,6 +63,7 @@ int main() {
 					cin >> profesion;
 					cout << "Departamento asignado: ";
 					cin >> departamento;
+					obj2->registrarPersonal(nombre, departamento, profesion, anios, contador);
 					cout << "Personal registrado correctamente!" << endl;
 					_getch();
 				}
@@ -77,10 +79,20 @@ int main() {
 						cin >> opcion1;
 						if (opcion1 == 1) {
 							system("cls");
+							cout << "\t Doctores del Ministerio de Salud" << endl;
+							auto mostrarDoctores = [](Personal<string, string, string, int> *obj2) {
+								return(obj2->getProfesion() ==  "Doctor" || obj2->getProfesion() == "Doctora" || obj2->getProfesion() == "doctor" || obj2->getProfesion() == "doctora") ? true: false;
+							};
+							obj2->mostrarDoctores(mostrarDoctores);
 							_getch();
 						}
-						else if (opcion == 2) {
+						else if (opcion1 == 2) {
 							system("cls");
+							cout << "\t Enfermeras del Ministerio de Salud" << endl;
+							auto mostrarEnfermeros = [](Personal<string, string, string, int> *obj2) {
+								return(obj2->getProfesion() == "Enfermero" || obj2->getProfesion() == "Enfermera" || obj2->getProfesion() == "enfermero" || obj2->getProfesion() == "enfermera") ? true : false;
+							};
+							obj2->mostrarEnfermeros(mostrarEnfermeros);
 							_getch();
 						}
 					} while (opcion1 != 3);

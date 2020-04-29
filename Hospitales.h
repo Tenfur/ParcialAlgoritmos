@@ -46,7 +46,7 @@ class Hospital {
 			ifstream archivo;
 			string registro, nombre, departamento, numeroRespiradores, numeroPacientes, id;
 			int numero;
-			archivo.open("archivo.txt", ios::in);
+			archivo.open("Hospitales.txt", ios::in);
 			while (getline(archivo, registro)) {
 				stringstream ss(registro);
 				getline(ss, nombre, ',');
@@ -67,7 +67,7 @@ class Hospital {
 			if (contador == 0) {
 				++contador;
 				inicio = final = nuevo;
-				archivo.open("archivo.txt", ios::out);
+				archivo.open("Hospitales.txt", ios::out);
 				archivo << nombre << ',' << departamento << ',' << respiradoresMecanicos << ',' << pacientes << ',' << contador << endl;
 				cout << endl;
 				archivo.close();
@@ -78,7 +78,7 @@ class Hospital {
 				ifstream archivo2;
 				string registro, Snombre, Sdepartamento, SnumeroRespiradores, SnumeroPacientes;
 				int NnumeroRespiradores, NnumeroPacientes;
-				archivo2.open("archivo.txt", ios::in);
+				archivo2.open("Hospitales.txt", ios::in);
 				while (getline(archivo2, registro)) {
 					stringstream ss(registro);
 					getline(ss, Snombre, ',');
@@ -93,7 +93,7 @@ class Hospital {
 				final = nuevo2;
 				final->siguiente = nuevo;
 				final = nuevo;
-				archivo.open("archivo.txt", ios::app);
+				archivo.open("Hospitales.txt", ios::app);
 				archivo << nombre << ',' << departamento << ',' << respiradoresMecanicos << ',' << pacientes << ','  << contador << endl;
 				cout << endl;
 				archivo.close();
@@ -101,7 +101,7 @@ class Hospital {
 		}
 		void mostrarHospitales() {
 			ifstream archivo;
-			archivo.open("archivo.txt", ios::in);
+			archivo.open("Hospitales.txt", ios::in);
 			string registro, nombre, departamento, numeroRespiradores, numeroPacientes;
 			int cont = 0;
 			while (getline(archivo, registro)) {
@@ -118,12 +118,11 @@ class Hospital {
 				++cont;
 			}
 			cout << "Hospitales registrados: " << cont << endl;
-			_getch();
 			archivo.close();
 		}
 		void mostrarHospitalesSaturados(function<bool(Hospital<string,string,int,int>*)> condicion) {
 			ifstream archivo;
-			archivo.open("archivo.txt", ios::in);
+			archivo.open("Hospitales.txt", ios::in);
 			string registro, nombre, departamento, numeroRespiradores, numeroPacientes;
 			int cont = 0, numeroPac, numeroRes;
 			while (getline(archivo, registro)) {
@@ -143,7 +142,7 @@ class Hospital {
 		}
 		void mostrarHospitalesConRespiradoresInsuficientes(function<bool(Hospital<string, string, int, int>*)> condicion) {
 			ifstream archivo;
-			archivo.open("archivo.txt", ios::in);
+			archivo.open("Hospitales.txt", ios::in);
 			string registro, nombre, departamento, numeroRespiradores, numeroPacientes;
 			int cont = 0, numeroPac, numeroRes;
 			while (getline(archivo, registro)) {
@@ -163,7 +162,7 @@ class Hospital {
 		}
 		void mostrarHospitalesPorDepartamento(function<bool(Hospital<string, string, int, int>*)> condicion) {
 			ifstream archivo;
-			archivo.open("archivo.txt", ios::in);
+			archivo.open("Hospitales.txt", ios::in);
 			string registro, nombre, departamento, numeroRespiradores, numeroPacientes;
 			int cont = 0, numeroPac, numeroRes;
 			while (getline(archivo, registro)) {
