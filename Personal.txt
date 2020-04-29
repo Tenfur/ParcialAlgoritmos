@@ -1,5 +1,1 @@
-Paolo,Lima,Doctor,17,1
-Jorge,Lima,Doctor,20,2
-Valeria,Lima,Doctora,40,3
-Angelica,Tacna,Enfermera,40,4
-Estefano,Tacna,doctor,90,5
+Paolo,Lima,doctor,17,1

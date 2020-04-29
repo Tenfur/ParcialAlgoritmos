@@ -14,7 +14,6 @@ class Hospital {
 		Hospital *inicio;
 		Hospital *final;
 		Hospital *siguiente;
-		Hospital *anterior;
 		T1 nombre;
 		T2 departamento;
 		T3 respiradoresMecanicos;
@@ -31,7 +30,6 @@ class Hospital {
 		Hospital() {
 			this->inicio = NULL;
 			this->final = NULL;
-			this->anterior = NULL;
 		}
 		T3 getRespiradores() {
 			return respiradoresMecanicos;
@@ -180,6 +178,6 @@ class Hospital {
 			}
 			archivo.close();
 		}
-
-
+		
+	
 };

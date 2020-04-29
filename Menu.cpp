@@ -5,6 +5,7 @@
 #include <functional>
 #include "Hospitales.h"
 #include "Personal.h"
+#include "Presupuesto.h"
 
 using namespace std;
 
@@ -13,20 +14,23 @@ int main() {
 	string departamento, nombre;
 	Hospital <string, string, int, int> *obj = new Hospital<string, string, int, int>();
 	Personal <string, string, string, int> *obj2 = new Personal<string, string, string, int>();
+	Presupuesto <string, int> *obj3 = new Presupuesto<string, int>();
 	do {
 		system("cls");
 		cout << "\tMinisterio de salud" << endl;
 		cout << "1) Hospitales " << endl;
 		cout << "2) Personal" << endl;
-		cout << "3) Informacion completa" << endl;
-		cout << "4) Ver datos en especifico" << endl;
-		cout << "5) Salir" << endl;
+		cout << "3) Presupuesto para afrontar la pandemia" << endl;
+		cout << "4) Informacion completa de los hospitales" << endl;
+		cout << "5) Ver datos en especifico" << endl;
+		cout << "6) Salir" << endl;
 		cout << "Ingrese opcion: ";
 		cin >> opcion;
 		if (opcion == 1) {
 			system("cls");
 			cin.ignore();
 			int numero = obj->getContador();
+			cout << "\t Registrar hospital" << endl;
 			cout << "Nombre: ";
 			cin >> nombre;
 			cout << "Departamento: ";
@@ -100,12 +104,43 @@ int main() {
 			} while (opcion3 != 3);
 		}
 		else if (opcion == 3) {
+			int opcion4;
+			do {
+				system("cls");
+				int presupuesto, contador;
+				contador = obj3->getContador();
+				cout << "\t Prespuestos por departamento" << endl << endl;
+				cout << "1) Registrar" << endl;
+				cout << "2) Mostrar" << endl;
+				cout << "3) Salir" << endl;
+				cout << "Ingrese opcion: ";
+				cin >> opcion4;
+				if (opcion4 == 1) {
+					system("cls");
+					cout << "\t Registrando presupuesto" << endl;
+					cout << "Departamento: ";
+					cin >> departamento;
+					cout << "Presupuesto: ";
+					cin >> presupuesto;
+					obj3->registrarPresupuesto(departamento, presupuesto, contador);
+					cout << "Registrado correctamente!" << endl;
+					_getch();
+				}
+				else if (opcion4 == 2) {
+					system("cls");
+					cout << "\tDepartamentos registrados" << endl << endl;
+					obj3->mostrarPresupuestos();
+					_getch();
+				}
+			} while (opcion4 != 3);
+		}
+		else if (opcion == 4) {
 			system("cls");
 			cout << "Hospitales registrados: " << endl;
 			obj->mostrarHospitales();
 			_getch();
 		}
-		else if (opcion == 4) {
+		else if (opcion == 5) {
 			do {
 				system("cls");
 				cout << "\t Informacion detallada" << endl;
@@ -148,9 +183,6 @@ int main() {
 				}
 			} while (opcion2 != 4);
 		}
-	} while (opcion !=5);
-
-
-
+	} while (opcion !=6);
 	return 0;
 }
