@@ -3,3 +3,4 @@ SanJuan,Tacna,300,30000,2
 SanPedro,Ayacucho,300,100,3
 SanPedro2,Tacna,30,40,4
 Lomas,Tacna,90,20,5
+Paolo,Lima,30,40,6

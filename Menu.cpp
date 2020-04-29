@@ -8,14 +8,14 @@
 using namespace std;
 
 int main() {
-	int opcion, opcion2, numeroDePacientes, numeroRespiradores;
+	int opcion, opcion2, opcion3, numeroDePacientes, numeroRespiradores;
 	string departamento, nombre;
 	Hospital <string, string, int, int> *obj = new Hospital<string, string, int, int>();
 	do {
 		system("cls");
 		cout << "\tMinisterio de salud" << endl;
 		cout << "1) Registrar hospital " << endl;
-		cout << "2) Registrar paciente" << endl;
+		cout << "2) Registrar personal" << endl;
 		cout << "3) Mostrar informacion completa" << endl;
 		cout << "4) Ver datos en especifico" << endl;
 		cout << "5) Salir" << endl;
@@ -38,6 +38,54 @@ int main() {
 			obj->registrarHospital(nombre, departamento, numeroRespiradores, numeroDePacientes, numero);
 			cout << "Hospital registrado correctamente!" << endl;
 			_getch();
+		}
+		else if (opcion == 2) {
+			do {
+				system("cls");
+				cin.ignore();
+				int anios;
+				string nombre, departamento, profesion;
+				cout << "\t Menu de personal" << endl;
+				cout << "1) Registrar " << endl;
+				cout << "2) Visualizar personal registrado" << endl;
+				cout << "3) Salir" << endl;
+				cout << "Ingrese opcion: ";
+				cin >> opcion3;
+				if (opcion3 == 1) {
+					system("cls");
+					cout << "\t Registrar nuevo personal" << endl;
+					cout << "Nombre: ";
+					cin >> nombre;
+					cout << "Anios: ";
+					cin >> anios;
+					cout << "Profesion: ";
+					cin >> profesion;
+					cout << "Departamento asignado: ";
+					cin >> departamento;
+					cout << "Personal registrado correctamente!" << endl;
+					_getch();
+				}
+				else if (opcion3 == 2) {
+					int opcion1;
+					do {
+						system("cls");
+						cout << "\t Personal del Ministerio de Salud" << endl;
+						cout << "1) Doctores" << endl;
+						cout << "2) Enfermeras" << endl;
+						cout << "3) Salir" << endl;
+						cout << "Ingrese opcion: ";
+						cin >> opcion1;
+						if (opcion1 == 1) {
+							system("cls");
+							_getch();
+						}
+						else if (opcion == 2) {
+							system("cls");
+							_getch();
+						}
+					} while (opcion1 != 3);
+				}
+			} while (opcion3 != 3);
 		}
 		else if (opcion == 3) {
 			system("cls");
