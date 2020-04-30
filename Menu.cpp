@@ -6,22 +6,25 @@
 #include "Hospitales.h"
 #include "Personal.h"
 #include "Presupuesto.h"
+#include "Paciente.h"
 
 using namespace std;
 
 int main() {
-	int opcionMenu, numeroDePacientes, numeroRespiradores;
-	string departamento, nombre;
+	int opcionMenu, numeroDePacientes, numeroRespiradores, edad, DNI;
+	string departamento, nombre, enfermedad;
 	Hospital <string, string, int, int> *obj = new Hospital<string, string, int, int>();
 	Personal <string, string, string, int> *obj2 = new Personal<string, string, string, int>();
 	Presupuesto <string, int> *obj3 = new Presupuesto<string, int>();
+	Paciente <string, string, int, int> *obj4 = new Paciente<string, string, int, int>();
 	do {
 		system("cls");
 		cout << "\tMinisterio de salud" << endl;
 		cout << "1) Hospitales " << endl;
 		cout << "2) Personal" << endl;
-		cout << "3) Presupuesto para afrontar la pandemia" << endl;
-		cout << "4) Salir" << endl;
+		cout << "3) Paciente" << endl;
+		cout << "4) Presupuesto para afrontar la pandemia" << endl;
+		cout << "5) Salir" << endl;
 		cout << "Ingrese opcion: ";
 		cin >> opcionMenu;
 		if (opcionMenu == 1) {
@@ -53,7 +56,7 @@ int main() {
 				}
 				else if (opcionHospitales == 2) {
 					system("cls");
-					cout << "Hospitales registrados: " << endl;
+					cout << "Hospitales registrados: " << endl;	
 					obj->mostrarHospitales();
 					_getch();
 				}
@@ -80,7 +83,7 @@ int main() {
 						else if (opcionHospitalDetallado == 2) {
 							system("cls");
 							auto respiradoresInsuficientes = [](Hospital <string, string, int, int> *obj) {
-								return (obj->getRespiradores() < 500) ? true : false;
+								return (obj->getRespiradores() < obj->getPacientes()) ? true : false;
 							};
 							cout << "\t Hospitales con insuficientes " << endl;
 							obj->mostrarHospitalesConRespiradoresInsuficientes(respiradoresInsuficientes);
@@ -164,6 +167,44 @@ int main() {
 			} while (menuPersonal != 3);
 		}
 		else if (opcionMenu == 3) {
+		int opcionPaciente, contador;
+			do {
+				system("cls");
+				cout << "\t Pacientes" << endl;
+				cout << "1) Registrar" << endl;
+				cout << "2) Mostrar a pacientes con COVID19" << endl;
+				cout << "3) Salir" << endl;
+				cout << "Ingrese opcion: ";
+				cin >> opcionPaciente;
+				if (opcionPaciente == 1) {
+					system("cls");
+					contador = obj4->getContador();
+					cout << "\t Registrar paciente" << endl;
+					cout << "Nombre: ";
+					cin >> nombre;
+					cout << "Enfermedad: ";
+					cin >> enfermedad;
+					cout << "Edad: ";
+					cin >> edad;
+					cout << "DNI: ";
+					cin >> DNI;
+					obj4->registrarPaciente(nombre, enfermedad, edad, DNI, contador);
+					cout << "Paciente registrado correctamente!";
+					_getch();
+				}
+				else if (opcionPaciente == 2) {
+					system("cls");
+					cout << "\t Pacientes con COVID19" << endl;
+					auto pacientesConCovid19 = [](Paciente<string, string, int, int> *obj) {
+						return(obj->getEnfermedad() == "Covid19" || obj->getEnfermedad() == "COVID19" || obj->getEnfermedad() == "covid19") ? true : false;
+					};
+					obj4->mostrarPacientesConCovid(pacientesConCovid19);
+
+					_getch();
+				}
+			} while (opcionPaciente != 3);
+		}
+		else if (opcionMenu == 4) {
 			int opcionPresupuestoDepartamento;
 			do {
 				system("cls");
@@ -201,6 +242,6 @@ int main() {
 				}
 			} while (opcionPresupuestoDepartamento != 3);
 		}
-	} while (opcionMenu !=4);
+	} while (opcionMenu !=5);
 	return 0;
 }
