@@ -5,3 +5,4 @@ lala,ls,20,30,4
 oko,kok44,90,80,5
 Paolo,Lima,20,30,6
 prueba1,lima,22,3,7
+Paolo,lima,20,40,8

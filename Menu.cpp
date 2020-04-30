@@ -27,7 +27,6 @@ int main() {
 		if (opcionMenu == 1) {
 			int opcionHospitales;
 			do {
-				cin.ignore();
 				system("cls");
 				cout << "\t Hospitales" << endl;
 				cout << "1) Registrar" << endl;
@@ -108,7 +107,6 @@ int main() {
 			int menuPersonal;
 			do {
 				system("cls");
-				cin.ignore();
 				string nombre, departamento, profesion;
 				int anios, contador;
 				cout << "\t Menu de personal" << endl;
