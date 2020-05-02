@@ -172,7 +172,7 @@ int main() {
 				system("cls");
 				cout << "\t Pacientes" << endl;
 				cout << "1) Registrar" << endl;
-				cout << "2) Mostrar a pacientes con COVID19" << endl;
+				cout << "2) Mostrar a pacientes" << endl;
 				cout << "3) Salir" << endl;
 				cout << "Ingrese opcion: ";
 				cin >> opcionPaciente;
@@ -193,14 +193,34 @@ int main() {
 					_getch();
 				}
 				else if (opcionPaciente == 2) {
-					system("cls");
-					cout << "\t Pacientes con COVID19" << endl;
-					auto pacientesConCovid19 = [](Paciente<string, string, int, int> *obj) {
-						return(obj->getEnfermedad() == "Covid19" || obj->getEnfermedad() == "COVID19" || obj->getEnfermedad() == "covid19") ? true : false;
-					};
-					obj4->mostrarPacientesConCovid(pacientesConCovid19);
-
-					_getch();
+					int opcionPacienteRegistrado;
+					do {
+						system("cls");
+						cout << "\t Pacientes registrados" << endl;
+						cout << "1) COVID19" << endl;
+						cout << "2) Otras enfermedades" << endl;
+						cout << "3) Salir" << endl;
+						cout << "Ingrese opcion: ";
+						cin >> opcionPacienteRegistrado;
+						if (opcionPacienteRegistrado == 1) {
+							system("cls");
+							cout << "\t Pacientes con COVID19" << endl;
+							auto pacientesConCovid19 = [](Paciente<string, string, int, int> *obj) {
+								return(obj->getEnfermedad() == "Covid19" || obj->getEnfermedad() == "COVID19" || obj->getEnfermedad() == "covid19") ? true : false;
+							};
+							obj4->mostrarPacientesConCovid(pacientesConCovid19);
+							_getch();
+						}
+						else if (opcionPacienteRegistrado == 2) {
+							system("cls");
+							cout << "\t Pacientes con otras enfermedades" << endl;
+							auto pacienteConOtrasEnfermedades = [](Paciente<string, string, int, int> *obj) {
+								return(obj->getEnfermedad() != "Covid19") ? true : false;
+							};
+							obj4->mostrarPacientesConOtraEnfermedad(pacienteConOtrasEnfermedades);
+							_getch();
+						}
+					} while (opcionPacienteRegistrado != 3);
 				}
 			} while (opcionPaciente != 3);
 		}

@@ -45,6 +45,7 @@ class Presupuesto {
 			contador = numeroPresupuestos;
 			if (contador == 0) {
 				++contador;
+				incio = final = nuevo;
 				archivo.open("Presupuestos.txt", ios::out);
 				archivo << departamento << ',' << presupuesto << ',' << contador << endl;
 				cout << endl;
@@ -62,6 +63,12 @@ class Presupuesto {
 					getline(ss, Spresupuestos, ',');
 					Npresupuestos = atoi(Spresupuestos.c_str());
 				}
+				/*Creamos el objeto nuevo2 para que final pueda apuntarlo.
+				  De esa forma, el final está apuntando al nuevo2 y el siguiente sería el nuevo objeto que se está creando
+				  Despues de eso el final apuntará al nuevo y el programa podrá funcionar en tiempo de ejecución.
+
+				  El final debe apuntar a algo para que ese algo pueda apuntar al nuevo objeto. Por eso, el final apunta al nuevo2 y de esa forma el nuevo2 podrá apuntar al nuevo objeto que se crea 
+				*/
 				archivo2.close();
 				Presupuesto *nuevo2 = new Presupuesto(Sdepartamento, Npresupuestos);
 				final = nuevo2;

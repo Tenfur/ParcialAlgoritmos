@@ -1,4 +1,4 @@
-paolo,covi19,17,2323232,1
-enzo,covid19,232323,2323232,2
-carlos,covid19,23232,2323232,3
-Juana,cancer,32232,2323232,4
+Paolo,cance,17,74922323,1
+Sergio,Covid19,17,222222,2
+lomas,sifilis,38,2222,3
+paolo,covid19,17,2222,4

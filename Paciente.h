@@ -111,6 +111,30 @@ class Paciente {
 			}
 			archivo.close();
 		}
+		void mostrarPacientesConOtraEnfermedad(function<bool(Paciente < string, string, int, int>*)>condicion) {
+			ifstream archivo;
+			string registro, nombre, enfermedad, edad, DNI;
+			int Nedad, NDNI;
+			archivo.open("Pacientes.txt", ios::in);
+			while (getline(archivo, registro)) {
+				stringstream ss(registro);
+				getline(ss, nombre, ',');
+				getline(ss, enfermedad, ',');
+				getline(ss, edad, ',');
+				getline(ss, DNI, ',');
+				Nedad = atoi(edad.c_str());
+				NDNI = atoi(DNI.c_str());
+				Paciente *aux = new Paciente(nombre, enfermedad, Nedad, NDNI);
+				if (condicion(aux)) {
+					cout << "Nombre: " << aux->nombre << endl;
+					cout << "Enfermedad: " << aux->enfermedad << endl;
+					cout << "Anios: " << aux->edad << endl;
+					cout << "DNI: " << aux->DNI << endl;
+					cout << endl;
+				}
+			}
+			archivo.close();
+		}
 
 
 
