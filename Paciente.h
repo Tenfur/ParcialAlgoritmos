@@ -24,7 +24,6 @@ public:
 		this->edad = edad;
 		this->DNI = DNI;
 		this->siguiente = NULL;
-		this->anterior = NULL;
 	}
 	T2 getPrueba() {
 		return prueba;
