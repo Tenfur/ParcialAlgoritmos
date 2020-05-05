@@ -45,7 +45,7 @@ class Presupuesto {
 			contador = numeroPresupuestos;
 			if (contador == 0) {
 				++contador;
-				incio = final = nuevo;
+				inicio = final = nuevo;
 				archivo.open("Presupuestos.txt", ios::out);
 				archivo << departamento << ',' << presupuesto << ',' << contador << endl;
 				cout << endl;
@@ -111,6 +111,4 @@ class Presupuesto {
 			}
 			archivo.close();
 		}
-
-
 };

@@ -40,12 +40,13 @@ int main() {
 				cin >> opcionHospitales;
 				if (opcionHospitales == 1) {
 					system("cls");
+					cin.ignore();
 					int numero = obj->getContador();
 					cout << "\t Registrar hospital" << endl;
 					cout << "Nombre: ";
-					cin >> nombre;
+					getline(cin, nombre);
 					cout << "Departamento: ";
-					cin >> departamento;
+					getline(cin, departamento);
 					cout << "Numero de respiradores mecanicos: ";
 					cin >> numeroRespiradores;
 					cout << "Numero de pacientes: ";
@@ -128,8 +129,9 @@ int main() {
 					cin >> anios;
 					cout << "Profesion: ";
 					cin >> profesion;
+					cin.ignore();
 					cout << "Departamento asignado: ";
-					cin >> departamento;
+					getline(cin, departamento);
 					obj2->registrarPersonal(nombre, departamento, profesion, anios, contador);
 					cout << "Personal registrado correctamente!" << endl;
 					_getch();
@@ -178,12 +180,13 @@ int main() {
 				cin >> opcionPaciente;
 				if (opcionPaciente == 1) {
 					system("cls");
+					cin.ignore();
 					contador = obj4->getContador();
 					cout << "\t Registrar paciente" << endl;
 					cout << "Nombre: ";
-					cin >> nombre;
+					getline(cin, nombre);
 					cout << "Enfermedad: ";
-					cin >> enfermedad;
+					getline(cin, enfermedad);
 					cout << "Edad: ";
 					cin >> edad;
 					cout << "DNI: ";

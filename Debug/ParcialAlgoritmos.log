@@ -1,5 +1,4 @@
 ﻿  Menu.cpp
-c:\users\paolo\source\repos\tercer_ciclo\parcialalgoritmos\parcialalgoritmos\presupuesto.h(106): warning C4715: 'Presupuesto<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,int>::comprobarDepartamento': no todas las rutas de acceso de control devuelven un valor
-c:\users\paolo\source\repos\tercer_ciclo\parcialalgoritmos\parcialalgoritmos\presupuesto.h(67): warning C4700: se utilizó la variable local 'nuevo2' sin inicializar
+c:\users\paolo\source\repos\tercer_ciclo\parcialalgoritmos\parcialalgoritmos\presupuesto.h(113): warning C4715: 'Presupuesto<std::basic_string<char,std::char_traits<char>,std::allocator<char> >,int>::comprobarDepartamento': no todas las rutas de acceso de control devuelven un valor
   Menu.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
   ParcialAlgoritmos.vcxproj -> C:\Users\Paolo\source\repos\Tercer_ciclo\ParcialAlgoritmos\Debug\ParcialAlgoritmos.exe

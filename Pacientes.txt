@@ -1,4 +1,0 @@
-Paolo,cance,17,74922323,1
-Sergio,Covid19,17,222222,2
-lomas,sifilis,38,2222,3
-paolo,covid19,17,2222,4
