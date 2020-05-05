@@ -13,16 +13,16 @@ using namespace std;
 int main() {
 	int opcionMenu, numeroDePacientes, numeroRespiradores, edad, DNI;
 	string departamento, nombre, enfermedad;
-	Hospital <string, string, int, int> *obj = new Hospital<string, string, int, int>();
-	Personal <string, string, string, int> *obj2 = new Personal<string, string, string, int>();
-	Presupuesto <string, int> *obj3 = new Presupuesto<string, int>();
-	Paciente <string, string, int, int> *obj4 = new Paciente<string, string, int, int>();
+	Hospital <string, string, int, int>* obj = new Hospital<string, string, int, int>();
+	Personal <string, string, string, int>* obj2 = new Personal<string, string, string, int>();
+	Presupuesto <string, int>* obj3 = new Presupuesto<string, int>();
+	Paciente <string, string, int, int>* obj4 = new Paciente<string, string, int, int>();
 	do {
 		system("cls");
 		cout << "\tMinisterio de salud" << endl;
 		cout << "1) Hospitales " << endl;
 		cout << "2) Personal" << endl;
-		cout << "3) Paciente" << endl;
+		cout << "3) Pruebas Rapidas" << endl;
 		cout << "4) Presupuesto para afrontar la pandemia" << endl;
 		cout << "5) Salir" << endl;
 		cout << "Ingrese opcion: ";
@@ -40,10 +40,10 @@ int main() {
 				cin >> opcionHospitales;
 				if (opcionHospitales == 1) {
 					system("cls");
-					cin.ignore();
 					int numero = obj->getContador();
 					cout << "\t Registrar hospital" << endl;
 					cout << "Nombre: ";
+					cin.ignore();
 					getline(cin, nombre);
 					cout << "Departamento: ";
 					getline(cin, departamento);
@@ -57,7 +57,7 @@ int main() {
 				}
 				else if (opcionHospitales == 2) {
 					system("cls");
-					cout << "Hospitales registrados: " << endl;	
+					cout << "Hospitales registrados: " << endl;
 					obj->mostrarHospitales();
 					_getch();
 				}
@@ -74,7 +74,7 @@ int main() {
 						cin >> opcionHospitalDetallado;
 						if (opcionHospitalDetallado == 1) {
 							system("cls");
-							auto hospitalesSaturados = [](Hospital<string, string, int, int> *obj2) {
+							auto hospitalesSaturados = [](Hospital<string, string, int, int>* obj2) {
 								return (obj2->getPacientes() > 1000) ? true : false;
 							};
 							cout << "\t Hospitales saturados" << endl;
@@ -83,7 +83,7 @@ int main() {
 						}
 						else if (opcionHospitalDetallado == 2) {
 							system("cls");
-							auto respiradoresInsuficientes = [](Hospital <string, string, int, int> *obj) {
+							auto respiradoresInsuficientes = [](Hospital <string, string, int, int>* obj) {
 								return (obj->getRespiradores() < obj->getPacientes()) ? true : false;
 							};
 							cout << "\t Hospitales con insuficientes " << endl;
@@ -96,7 +96,7 @@ int main() {
 							cout << "Ingrese departamento: ";
 							cin >> departamento2;
 							system("cls");
-							auto hospitalesPorDepartamento = [departamento2](Hospital <string, string, int, int> * obj) {
+							auto hospitalesPorDepartamento = [departamento2](Hospital <string, string, int, int>* obj) {
 								return (obj->getDepartamento() == departamento2) ? true : false;
 							};
 							cout << "\t Hospitales en " << departamento2 << endl;
@@ -124,14 +124,16 @@ int main() {
 					cout << "\t Registrar nuevo personal" << endl;
 					contador = obj2->getContador();
 					cout << "Nombre: ";
-					cin >> nombre;
+					cin.ignore();
+					getline(cin, nombre);
 					cout << "Anios: ";
 					cin >> anios;
 					cout << "Profesion: ";
-					cin >> profesion;
 					cin.ignore();
+					getline(cin, profesion);
 					cout << "Departamento asignado: ";
 					getline(cin, departamento);
+
 					obj2->registrarPersonal(nombre, departamento, profesion, anios, contador);
 					cout << "Personal registrado correctamente!" << endl;
 					_getch();
@@ -149,8 +151,8 @@ int main() {
 						if (menuPersonalDetallado == 1) {
 							system("cls");
 							cout << "\t Doctores del Ministerio de Salud" << endl;
-							auto mostrarDoctores = [](Personal<string, string, string, int> *obj2) {
-								return(obj2->getProfesion() ==  "Doctor" || obj2->getProfesion() == "Doctora" || obj2->getProfesion() == "doctor" || obj2->getProfesion() == "doctora") ? true: false;
+							auto mostrarDoctores = [](Personal<string, string, string, int>* obj2) {
+								return(obj2->getProfesion() == "Doctor" || obj2->getProfesion() == "Doctora" || obj2->getProfesion() == "doctor" || obj2->getProfesion() == "doctora") ? true : false;
 							};
 							obj2->mostrarDoctores(mostrarDoctores);
 							_getch();
@@ -158,7 +160,7 @@ int main() {
 						else if (menuPersonalDetallado == 2) {
 							system("cls");
 							cout << "\t Enfermeras del Ministerio de Salud" << endl;
-							auto mostrarEnfermeros = [](Personal<string, string, string, int> *obj2) {
+							auto mostrarEnfermeros = [](Personal<string, string, string, int>* obj2) {
 								return(obj2->getProfesion() == "Enfermero" || obj2->getProfesion() == "Enfermera" || obj2->getProfesion() == "enfermero" || obj2->getProfesion() == "enfermera") ? true : false;
 							};
 							obj2->mostrarEnfermeros(mostrarEnfermeros);
@@ -169,10 +171,10 @@ int main() {
 			} while (menuPersonal != 3);
 		}
 		else if (opcionMenu == 3) {
-		int opcionPaciente, contador;
+			int opcionPaciente, contador;
 			do {
 				system("cls");
-				cout << "\t Pacientes" << endl;
+				cout << "\t Registro de pruebas" << endl;
 				cout << "1) Registrar" << endl;
 				cout << "2) Mostrar a pacientes" << endl;
 				cout << "3) Salir" << endl;
@@ -180,47 +182,49 @@ int main() {
 				cin >> opcionPaciente;
 				if (opcionPaciente == 1) {
 					system("cls");
-					cin.ignore();
 					contador = obj4->getContador();
-					cout << "\t Registrar paciente" << endl;
+
+					cout << "\t Registrar Prueba" << endl;
 					cout << "Nombre: ";
+					cin.ignore();
 					getline(cin, nombre);
-					cout << "Enfermedad: ";
+					cout << "Rsultado de prueba: ";
 					getline(cin, enfermedad);
 					cout << "Edad: ";
 					cin >> edad;
 					cout << "DNI: ";
 					cin >> DNI;
 					obj4->registrarPaciente(nombre, enfermedad, edad, DNI, contador);
-					cout << "Paciente registrado correctamente!";
+					cin.ignore();
+					cout << "Resultado registrado correctamente!";
 					_getch();
 				}
 				else if (opcionPaciente == 2) {
 					int opcionPacienteRegistrado;
 					do {
 						system("cls");
-						cout << "\t Pacientes registrados" << endl;
+						cout << "\t Personas que se realizaron la prueba" << endl;
 						cout << "1) COVID19" << endl;
-						cout << "2) Otras enfermedades" << endl;
+						cout << "2) No COVID19" << endl;
 						cout << "3) Salir" << endl;
 						cout << "Ingrese opcion: ";
 						cin >> opcionPacienteRegistrado;
 						if (opcionPacienteRegistrado == 1) {
 							system("cls");
 							cout << "\t Pacientes con COVID19" << endl;
-							auto pacientesConCovid19 = [](Paciente<string, string, int, int> *obj) {
-								return(obj->getEnfermedad() == "Covid19" || obj->getEnfermedad() == "COVID19" || obj->getEnfermedad() == "covid19") ? true : false;
+							auto pacientesConCovid19 = [](Paciente<string, string, int, int>* obj) {
+								return(obj->getPrueba() == "Positivo" || obj->getPrueba() == "positivo" || obj->getPrueba() == "POSITIVO") ? true : false;
 							};
 							obj4->mostrarPacientesConCovid(pacientesConCovid19);
 							_getch();
 						}
 						else if (opcionPacienteRegistrado == 2) {
 							system("cls");
-							cout << "\t Pacientes con otras enfermedades" << endl;
-							auto pacienteConOtrasEnfermedades = [](Paciente<string, string, int, int> *obj) {
-								return(obj->getEnfermedad() != "Covid19") ? true : false;
+							cout << "\t Pacientes que no tienen Covid19" << endl;
+							auto pacienteSinCovid19 = [](Paciente<string, string, int, int>* obj) {
+								return(obj->getPrueba() != "Positivo" && obj->getPrueba() != "positivo" && obj->getPrueba() != "POSITIVO") ? true : false;
 							};
-							obj4->mostrarPacientesConOtraEnfermedad(pacienteConOtrasEnfermedades);
+							obj4->mostrarPacientesConOtraprueba(pacienteSinCovid19);
 							_getch();
 						}
 					} while (opcionPacienteRegistrado != 3);
@@ -243,7 +247,8 @@ int main() {
 					system("cls");
 					cout << "\t Registrando presupuesto" << endl;
 					cout << "Departamento: ";
-					cin >> departamento;
+					cin.ignore();
+					getline(cin, departamento);
 					if (obj3->comprobarDepartamento(departamento) == true) {
 						cout << "Error, este departamento ya esta registrado!" << endl;
 						_getch();
@@ -265,6 +270,6 @@ int main() {
 				}
 			} while (opcionPresupuestoDepartamento != 3);
 		}
-	} while (opcionMenu !=5);
+	} while (opcionMenu != 5);
 	return 0;
 }
