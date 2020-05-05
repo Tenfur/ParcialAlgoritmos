@@ -78,8 +78,8 @@ class Personal {
 					Nanios = atoi(Sanios.c_str());
 				}
 				archivo2.close();
-				Personal *nuevo2 = new Personal(Snombre, Sdepartamento, Sprofesion, Nanios);
-				final = nuevo2;
+				Personal *ultimoNodoGuardado = new Personal(Snombre, Sdepartamento, Sprofesion, Nanios);
+				final = ultimoNodoGuardado;
 				final->siguiente = nuevo;
 				final = nuevo;
 				archivo.open("Personal.txt", ios::app);

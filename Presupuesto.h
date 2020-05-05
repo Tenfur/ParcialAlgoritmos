@@ -70,8 +70,8 @@ class Presupuesto {
 				  El final debe apuntar a algo para que ese algo pueda apuntar al nuevo objeto. Por eso, el final apunta al nuevo2 y de esa forma el nuevo2 podrá apuntar al nuevo objeto que se crea 
 				*/
 				archivo2.close();
-				Presupuesto *nuevo2 = new Presupuesto(Sdepartamento, Npresupuestos);
-				final = nuevo2;
+				Presupuesto *ultimoNodoGuardado = new Presupuesto(Sdepartamento, Npresupuestos);
+				final = ultimoNodoGuardado;
 				final->siguiente = nuevo;
 				final = nuevo;
 				archivo.open("Presupuestos.txt", ios::app);

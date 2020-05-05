@@ -87,8 +87,8 @@ class Hospital {
 					NnumeroPacientes = atoi(SnumeroPacientes.c_str());
 				}
 				archivo2.close();
-				Hospital *nuevo2 = new Hospital(Snombre, Sdepartamento, NnumeroRespiradores, NnumeroPacientes);
-				final = nuevo2;
+				Hospital *ultimoNodoGuardado = new Hospital(Snombre, Sdepartamento, NnumeroRespiradores, NnumeroPacientes);
+				final = ultimoNodoGuardado;
 				final->siguiente = nuevo;
 				final = nuevo;
 				archivo.open("Hospitales.txt", ios::app);

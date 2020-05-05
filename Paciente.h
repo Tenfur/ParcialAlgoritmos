@@ -77,8 +77,8 @@ class Paciente {
 					NDNI = atoi(SDNI.c_str());
 				}
 				archivo2.close();
-				Paciente *aux = new Paciente(Snombre, Senfermedad, Nedad, NDNI);
-				final = aux;
+				Paciente *ultimoNodoGuardado = new Paciente(Snombre, Senfermedad, Nedad, NDNI);
+				final = ultimoNodoGuardado;
 				nuevo->anterior = final;
 				final->siguiente = nuevo;
 				final = nuevo;
